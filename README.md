@@ -35,6 +35,7 @@
 - 4. 在本地仓库完成作业后，push 到自己的码云远程仓库中
 - 5. 最后将自己最后的commit链接地址添加到训练营仓库的当天issue中
 - 6. 完成后在微信群中打卡，并`@`助教加学分
+- 7. 大家如果遇到问题可以提issue (https://gitee.com/zhufengpeixun/react-training-camp/issues),我会在周六晚上8点直播给大家解答大家问的比较多的问题.
 
 如果不会操作的可以看操作视频  http://img.zhufengpeixun.cn/submitwork.mp4
 
