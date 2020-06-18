@@ -301,3 +301,327 @@ src\index.html
 </html>
 ```
 
+## 3.路由配置
+- 这一章我们开始配置路由,我们的应用在尾部有三个页签,分别对应首页,购物车和个人中心三个页面
+- 在本章节我们实践以下内容 
+  - 1. 如何使用react全家桶配置路由
+  - 2. 如何按需加载`antd`并使用图标组件
+  - 3. 如何在react样式中使用`less`编写样式
+  - 4. 如何在移动端中使用rem实现布局以及如何使用flex
+  - 5. 如何使用typescript编写react代码
+
+本章目录
+
+```js
+├── package.json
+├── src
+│   ├── assets
+│   │   └── css
+│   │       └── common.less
+│   ├── components
+│   │   └── Tabs
+│   │       ├── index.less
+│   │       └── index.tsx
+│   ├── index.html
+│   ├── index.tsx
+│   ├── routes
+│   │   ├── Home
+│   │   │   └── index.tsx
+│   │   ├── Mine
+│   │   │   └── index.tsx
+│   │   └── Profile
+│   │       └── index.tsx
+│   └── store
+│       ├── action-types.tsx
+│       ├── history.tsx
+│       ├── index.tsx
+│       └── reducers
+│           ├── home.tsx
+│           ├── index.tsx
+│           ├── mime.tsx
+│           └── profile.tsx
+├── tsconfig.json
+└── webpack.config.js
+```
+
+本章效果预览
+
+![day1](http://img.zhufengpeixun.cn/zhufengketang_day1.gif)
+
+
+### 2.1 src\index.tsx
+src\index.tsx
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import { Switch, Route, Redirect } from "react-router-dom";//三个路由组件
+import { Provider } from "react-redux";//负责把属性中的store传递给子组件
+import store from "./store";//引入仓库
+import { ConfigProvider } from "antd";//配置
+import zh_CN from "antd/lib/locale-provider/zh_CN";//国际化中文
+import "./assets/css/common.less";//通用的样式
+import Tabs from "./components/Tabs";//引入底部的页签导航
+import Home from "./routes/Home";//首页
+import Mine from "./routes/Mine";//我的课程
+import Profile from "./routes/Profile";//个人中心
+import { ConnectedRouter } from 'connected-react-router';//redux绑定路由
+import history from './store/history';
+ReactDOM.render(
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            <ConfigProvider locale={zh_CN}>
+                <main className="main-container">
+                    <Switch>
+                        <Route path="/" exact component={Home} />
+                        <Route path="/mine" component={Mine} />
+                        <Route path="/profile" component={Profile} />
+                        <Redirect to="/" />
+                    </Switch>
+                </main>
+                <Tabs />
+            </ConfigProvider>
+        </ConnectedRouter>
+    </Provider>,
+    document.getElementById("root")
+);
+```
+
+### 2.2 src\assets\css\common.less
+src\assets\css\common.less
+```js
+ul,li{
+    list-style: none;
+}
+#root{
+    margin:0 auto;
+    max-width: 750px;
+    box-sizing: border-box;
+}
+.main-container{
+    padding:100px 0 120px 0;
+}
+```
+
+### 2.3 Tabs\index.tsx
+src\components\Tabs\index.tsx
+```js
+import React from "react";
+import { withRouter, NavLink } from 'react-router-dom';
+import {HomeOutlined,ShoppingCartOutlined,UserOutlined} from '@ant-design/icons';
+import './index.less';
+function Tabs() {
+    return (
+        <footer>
+            <NavLink exact to="/"><HomeOutlined /><span>首页</span></NavLink>
+             <NavLink to="/mine"><ShoppingCartOutlined /><span>购物车</span></NavLink>
+            <NavLink to="/profile"><UserOutlined /><span>个人中心</span></NavLink>
+        </footer>
+    );
+}
+export default withRouter(Tabs);
+```
+
+### 2.4 Tabs\index.less
+src\components\Tabs\index.less
+```less
+footer{
+    position: fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:120px;
+    z-index: 1000;
+    background-color: #FFF;
+    border-top:1px solid #D5D5D5;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    a{
+        display: flex;
+        flex:1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color:#000;
+        span{
+            font-size:30px;
+            line-height:50px;
+            &.anticon{
+                font-size:50px;
+            }
+        }
+        &.active{
+            color:blue;
+            font-weight: bold;
+        }
+    }
+}
+```
+
+### 2.5 history.tsx
+src\store\history.tsx
+```js
+import { createHashHistory } from 'history';
+export default createHashHistory();
+```
+
+### 2.6 action-types.tsx
+src\store\action-types.tsx
+```js
+export const ADD = 'ADD';
+```
+
+### 2.7 reducers\home.tsx
+src\store\reducers\home.tsx
+```js
+import { AnyAction } from 'redux';
+export interface HomeState {
+
+}
+let initialState: HomeState = {
+
+};
+export default function (state: HomeState = initialState, action: AnyAction): HomeState {
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
+```
+
+### 2.8 reducers\mime.tsx
+src\store\reducers\mime.tsx
+```js
+import { AnyAction } from 'redux';
+export interface MimeState {
+
+}
+let initialState: MimeState = {
+
+};
+export default function (state: MimeState = initialState, action: AnyAction): MimeState {
+    switch (action.type) {
+
+        default:
+            return state;
+    }
+}
+```
+
+### 2.9 reducers\profile.tsx
+src\store\reducers\profile.tsx
+```js
+import { AnyAction } from 'redux';
+export interface ProfilState {
+
+}
+let initialState: ProfilState = {
+
+};
+export default function (state: ProfilState = initialState, action: AnyAction): ProfilState {
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
+```
+
+### 2.10 reducers\index.tsx
+src\store\reducers\index.tsx
+```js
+import { combineReducers, ReducersMapObject, Reducer } from 'redux';
+import { connectRouter } from 'connected-react-router';
+import history from '../history';
+import home from './home';
+import mime from './mime';
+import profile from './profile';
+let reducers: ReducersMapObject = {
+    router: connectRouter(history),
+    home,
+    mime,
+    profile,
+};
+type CombinedState = {
+    [key in keyof typeof reducers]: ReturnType<typeof reducers[key]>
+}
+let reducer: Reducer<CombinedState> = combineReducers<CombinedState>(reducers);
+
+export { CombinedState }
+export default reducer;
+```
+
+
+
+### 2.11 store\index.tsx
+src\store\index.tsx
+```js
+import { createStore, applyMiddleware, Store, AnyAction } from 'redux';
+import reducers, { CombinedState } from './reducers';
+import logger from 'redux-logger';
+import thunk, { ThunkDispatch, ThunkAction } from 'redux-thunk';
+import promise from 'redux-promise';
+import { routerMiddleware } from 'connected-react-router';
+import history from './history';
+let store: Store<CombinedState, AnyAction> = createStore<CombinedState, AnyAction, {}, {}>(reducers, applyMiddleware(thunk, routerMiddleware(history), promise, logger));
+export default store;
+```
+
+### 2.12 src\routes\Home\index.tsx
+src\routes\Home\index.tsx
+
+```js
+import React, { PropsWithChildren } from 'react';
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
+interface Params { }
+type Props = PropsWithChildren<RouteComponentProps<Params>>;
+function Home(props: Props) {
+    return (
+        <div>
+            Home
+        </div>
+    )
+}
+export default connect(
+)(Home);
+```
+
+### 2.13 src\routes\Mine\index.tsx
+src\routes\Mine\index.tsx
+```js
+import React, { PropsWithChildren } from 'react';
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
+interface Params { }
+type Props = PropsWithChildren<RouteComponentProps<Params>>;
+function Mine(props: Props) {
+    return (
+        <div>
+            Mine
+        </div>
+    )
+}
+export default connect(
+
+)(Mine);
+```
+
+### 2.14 src\routes\Profile\index.tsx
+src\routes\Profile\index.tsx
+
+```js
+import React, { PropsWithChildren } from 'react';
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
+interface Params { }
+type Props = PropsWithChildren<RouteComponentProps<Params>>;
+function Profile(props: Props) {
+    return (
+        <div>
+            Profile
+        </div>
+    )
+}
+export default connect()(Profile);
+```

@@ -22,7 +22,8 @@ module.exports = () => {
             contentBase: resolve('dist'),
             historyApiFallback: { // notFound direct to index.html
                 index: './index.html',
-            }
+            },
+            host: '0.0.0.0',
         },
         optimization: {
             minimize: true,
