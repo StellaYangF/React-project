@@ -1,0 +1,25 @@
+{
+  "name": "react-training-camp",
+  "version": "1.0.0",
+  "description": "系统学习和掌握React全家桶的实战应用，功能包括：",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/StellaYangFan/react-training-camp.git"
+  },
+  "keywords": [],
+  "author": "Stella",
+  "license": "ISC",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.2.0",
+    "husky": "^4.2.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
