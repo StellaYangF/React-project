@@ -16,7 +16,10 @@
   "devDependencies": {
     "conventional-changelog": "^3.1.21",
     "cz-conventional-changelog": "^3.2.0",
-    "husky": "^4.2.5"
+    "glob": "^7.1.6",
+    "husky": "^4.2.5",
+    "image-webpack-loader": "^6.0.0",
+    "purgecss-webpack-plugin": "^2.3.0"
   },
   "config": {
     "commitizen": {

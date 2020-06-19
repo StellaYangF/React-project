@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server"
+    "build": "webpack --config ./build/webpack.prod.js",
+    "dev": "webpack --config ./build/webpack.dev.js",
+    "dev:dev": "webpack-dev-server --config ./build/webpack.dev.js",
+    "dev:prod": "webpack-dev-server --config ./build/webpack.prod.js",
+    "dll:dev": "webpack --config ./build/webpack.dll.js --mode development",
+    "dll:prod": "webpack --config ./build/webpack.dll.js --mode production"
   },
   "keywords": [],
   "author": "",
@@ -38,9 +42,14 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.10",
     "autoprefixer": "^9.8.0",
+    "classnames": "^2.2.6",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.6.0",
+    "cssnano": "^4.1.10",
     "file-loader": "^6.0.0",
+    "html-webpack-externals-plugin": "^3.8.0",
     "html-webpack-plugin": "^4.3.0",
     "less": "^3.11.3",
     "less-loader": "^6.1.1",
@@ -58,6 +67,7 @@
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
   }
 }

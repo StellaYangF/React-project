@@ -1,10 +1,17 @@
 import {AnyAction} from 'redux';
-export interface HomeState {
+import { SET_CURRENT_CATEGORY } from '../action-types';
 
+export interface HomeState {
+    currentCategory: string,
 }
-let initialState: HomeState = {}
+
+let initialState: HomeState = {
+    currentCategory: 'all',
+}
 export default function(state: HomeState = initialState, action: AnyAction):HomeState {
     switch (action.type) {
+        case SET_CURRENT_CATEGORY:
+            return { ...state, currentCategory: action.payload };
         default:
             return state;
     }
