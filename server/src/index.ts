@@ -8,7 +8,7 @@ import errorMiddleware from './middlewares/errorMiddleware';
 import * as userController from './controller/user';
 import 'dotenv/config';
 import multer from 'multer';
-import path from 'path';
+import path, { dirname } from 'path';
 
 const storage = multer.diskStorage({
     destination: path.join('public', 'uploads'),
@@ -23,6 +23,7 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(helmet());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.resolve(__dirname, '../public/')));
 // route
 app.get('/user/validate', userController.validate);
 app.post('/user/register', userController.register);
@@ -42,6 +43,6 @@ const PORT: number = (process.env.PORT && parseInt(process.env.PORT))|| 8000;
 (async function() {
     mongoose.set('useNewUrlParser', true),
     mongoose.set('useUnifiedTopology', true);
-    await mongoose.connect('mongodb://localhost:27017/react-project');
+    await mongoose.connect(process.env.MONGO_PATH!);
     app.listen(PORT, () => console.log(`Running on http://localhost:${PORT}`));
 })();

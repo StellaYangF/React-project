@@ -17,7 +17,7 @@ const UserSchema: Schema<IUserDocument> = new Schema({
     username: {
         type: String,
         required: [true, '用户名不能为空'],
-        minlength: [6, '最小长度不能少于 6 位'],
+        minlength: [3, '最小长度不能少于 3 位'],
         maxlength: [12, '最大长度不能大于 12 位'],
     },
     password: String,
