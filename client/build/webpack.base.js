@@ -10,7 +10,7 @@ const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 module.exports = {
     entry: resolve('src/index.tsx'),
     output: {
-        filename: '[name].[contentHash].js',
+        filename: '[name].js',
         path: resolve('dist'),
     },
     resolve: {
@@ -23,8 +23,19 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(le|c)ss$/,
-                exclude: /node_modules/,
+                test: /\.css$/,
+                // exclude: /node_modules/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', {
+                    loader: 'px2rem-loader',
+                    options: {
+                        remUnit: 75,
+                        remPrecesion: 8
+                    }
+                }, 'less-loader']
+            },
+            {
+                test: /\.less$/,
+                // exclude: /node_modules/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', {
                     loader: 'px2rem-loader',
                     options: {
@@ -39,6 +50,7 @@ module.exports = {
             },
             {
                 test: /\.(j|t)sx?/,
+                exclude: /node_modules/,
                 loader: 'ts-loader',
                 options: {
                     transpileOnly: true,

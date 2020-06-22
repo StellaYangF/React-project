@@ -35,6 +35,7 @@ export const validate = async (req: Request, res: Response, next: NextFunction) 
 };
 
 export const register = async(req: Request, res: Response, next: NextFunction) => {
+    console.log(req.body);
     try {
         let { username, password, confirmPassword, email, addresses } = req.body;    
         const { valid, errors } = validateRegisterInput(username, password, confirmPassword, email);
