@@ -17,6 +17,7 @@ type RouteProps = RouteComponentProps<Params>
 type Props = PropsWithChildren<StateProps & DispatchProps & RouteProps>
 
 function Profile(props: Props) {
+    console.log(props);
     useEffect(() => {
         props.validate().catch((error: AxiosError) => message.error(error.message));
     }, []);
@@ -60,4 +61,4 @@ function Profile(props: Props) {
 
 let mapStateToProps = (state: CombinedState): ProfileState => state.profile;
 
-export default connect()(Profile);
+export default connect(mapStateToProps, actions)(Profile);

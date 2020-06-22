@@ -9,7 +9,7 @@ import './assets/css/common.less';
 import Tabs from './components/Tabs';
 import Home from './routes/Home';
 import Mine from './routes/Mine';
-import Cart from './routes/Profile';
+import Profile from './routes/Profile';
 import {ConnectedRouter} from 'connected-react-router';
 import history from './store/history';
 
@@ -20,8 +20,8 @@ ReactDOM.render(
                 <main className='main-container'>
                     <Switch>
                         <Route path='/' exact component={Home}></Route>
-                        <Route path='/mine' exact component={Cart}></Route>
-                        <Route path='/profile' exact component={Mine}></Route>
+                        <Route path='/mine' exact component={Mine}></Route>
+                        <Route path='/profile' exact component={Profile}></Route>
                     </Switch>
                 </main>
                 <Tabs/>

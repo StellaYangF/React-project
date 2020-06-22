@@ -6,11 +6,12 @@ interface Props {
     children: any;
 }
 export default function NavHeader(props: Props) {
+    console.log(props);
     return (
         <div className='nav-header'>
             <LeftOutlined onClick={() => props.history.goBack()}>
-                { props.children }
             </LeftOutlined>
+            { props.children }
         </div>
     )
 }

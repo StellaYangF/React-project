@@ -1,5 +1,5 @@
 import {createStore, applyMiddleware, Store, AnyAction} from 'redux';
-import reducers, {CombinedState} from './reducers';
+import reducers, { CombinedState } from './reducers';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';

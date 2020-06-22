@@ -6,7 +6,7 @@ import mine from './mine';
 import profile from './profile';
 
 let reducers: ReducersMapObject = {
-    router: connectRouter(history),
+    router: connectRouter(history) as Reducer,
     home,
     mine,
     profile,
