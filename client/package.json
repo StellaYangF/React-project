@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config ./build/webpack.prod.js",
-    "dev": "webpack --config ./build/webpack.dev.js",
-    "dev:dev": "webpack-dev-server --config ./build/webpack.dev.js",
+    "build": "npm run dll:prod && webpack --config ./build/webpack.prod.js",
+    "dev": "npm run dll:dev && webpack --config ./build/webpack.dev.js",
+    "dev:dev": "npm run dll:dev && webpack-dev-server --config ./build/webpack.dev.js",
     "dev:prod": "webpack-dev-server --config ./build/webpack.prod.js",
-    "dll:dev": "webpack --config ./build/webpack.dll.js --mode development",
+    "dll:dev": "npm run dll:prod && webpack --config ./build/webpack.dll.js --mode development",
     "dll:prod": "webpack --config ./build/webpack.dll.js --mode production"
   },
   "keywords": [],

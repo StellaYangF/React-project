@@ -9,6 +9,7 @@ import * as userController from './controller/user';
 import 'dotenv/config';
 import multer from 'multer';
 import path, { dirname } from 'path';
+import bodyParser from 'body-parser';
 
 const storage = multer.diskStorage({
     destination: path.join('public', 'uploads'),
@@ -23,6 +24,7 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(helmet());
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '../public/')));
 // route
 app.get('/user/validate', userController.validate);

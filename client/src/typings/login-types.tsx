@@ -1,0 +1,7 @@
+enum LOGIN_TYPES {
+  LOGINED,
+  UNLOGIN,
+  UN_VALIDATE,
+};
+
+export default LOGIN_TYPES;

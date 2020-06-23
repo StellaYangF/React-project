@@ -10,6 +10,8 @@ import Tabs from './components/Tabs';
 import Home from './routes/Home';
 import Mine from './routes/Mine';
 import Profile from './routes/Profile';
+import Register from './routes/Register';
+import Login from './routes/Login';
 import {ConnectedRouter} from 'connected-react-router';
 import history from './store/history';
 
@@ -20,8 +22,11 @@ ReactDOM.render(
                 <main className='main-container'>
                     <Switch>
                         <Route path='/' exact component={Home}></Route>
-                        <Route path='/mine' exact component={Mine}></Route>
-                        <Route path='/profile' exact component={Profile}></Route>
+                        <Route path='/mine' component={Mine}></Route>
+                        <Route path='/profile' component={Profile}></Route>
+                        <Route path='/register' component={Register}></Route>
+                        <Route path='/login' component={Login}></Route>
+                        <Redirect to='/'></Redirect>
                     </Switch>
                 </main>
                 <Tabs/>

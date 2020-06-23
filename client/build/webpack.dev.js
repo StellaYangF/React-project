@@ -14,6 +14,6 @@ module.exports = smart(webpackConfig, {
         historyApiFallback: { // notFound direct to index.html
             index: './index.html',
         },
-        host: 'localhost',
+        host: '0.0.0.0',
     },
 });

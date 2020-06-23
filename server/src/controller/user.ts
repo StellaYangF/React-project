@@ -35,7 +35,7 @@ export const validate = async (req: Request, res: Response, next: NextFunction) 
 };
 
 export const register = async(req: Request, res: Response, next: NextFunction) => {
-    console.log(req.body);
+    console.log(req.body, 'req.body');
     try {
         let { username, password, confirmPassword, email, addresses } = req.body;    
         const { valid, errors } = validateRegisterInput(username, password, confirmPassword, email);
@@ -87,6 +87,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 
 export const uploadAvatar = async (req: Request, res: Response, next: NextFunction) => {
     let { userId } = req.body;
+    console.log(req.body);
     let domain = process.env.DOMAIN || `${req.protocol}://${req.headers.host}`;
     let avatar = `${domain}/uploads/${req.file.filename}`;
     await User.updateOne({ _id: userId }, { avatar });
