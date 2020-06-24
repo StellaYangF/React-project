@@ -1,10 +1,11 @@
-import React, {PropsWithChildren} from 'react';
+import React, { PropsWithChildren, useRef } from 'react';
 import {connect} from 'react-redux';
-import {RouteComponentProps} from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import actions from '@/store/actions/home';
-import HomeHeader from './components/HomeHeader.index';
-import {CombinedState} from '@/store/reducers';
-import {HomeState} from '@/store/reducers/home';
+import HomeHeader from './components/homeHeader/index';
+import HomeSliders from './components/homeSliders/index';
+import { CombinedState } from '@/store/reducers';
+import { HomeState } from '@/store/reducers/home';
 import './index.less';
 
 type StateProps = ReturnType<typeof mapStateToProps>
@@ -14,12 +15,16 @@ interface Params {}
 type Props = PropsWithChildren<RouteComponentProps<Params> & StateProps & DispatchProps>;
 
 function Home(props: Props) {
+  const homeContainerRef = useRef(null);
     return (
         <>
             <HomeHeader
                 currentCategory={props.currentCategory}
                 setCurrentCategory={props.setCurrentCategory}
-            ></HomeHeader>
+            />
+            <div className='home-container' ref={ homeContainerRef }>
+              <HomeSliders sliders={ props.sliders } getSliders={ props.getSliders }></HomeSliders>
+            </div>
         </>
     )
 }

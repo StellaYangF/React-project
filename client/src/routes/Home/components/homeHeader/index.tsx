@@ -12,31 +12,30 @@ const defaultStyle = {
     opacity: 0,
 }
 interface TransitionStyles {
-    entering: CSSProperties;//进入时的样式
-    entered: CSSProperties;//进入成功时的样式
-    exiting: CSSProperties;//退出时的样式
-    exited: CSSProperties;//退出成功时的样式
+    entering: CSSProperties;
+    entered: CSSProperties;
+    exiting: CSSProperties;
+    exited: CSSProperties;
 }
 const transitionStyles: TransitionStyles = {
-    entering: { opacity: 1 },//不透明度为1
-    entered: { opacity: 1 }, //不透明度为1
-    exiting: { opacity: 0 }, //不透明度为0
-    exited: { opacity: 0 },  //不透明度为0
+    entering: { opacity: 1 },
+    entered: { opacity: 1 },
+    exiting: { opacity: 0 },
+    exited: { opacity: 0, display: 'none' },
 };
 
 
 interface Props {
-    currentCategory: string;//当前选中的分类 此数据会放在redux仓库中
-    setCurrentCategory: (currentCategory: string) => any;// 改变仓库中的分类
+    currentCategory: string;
+    setCurrentCategory: (currentCategory: string) => any;
 }
 function HomeHeader(props: Props) {
-    let [isMenuVisible, setIsMenuVisible] = useState(false);//设定标识位表示菜单是否显示
-    //设置当前分类,把当前选中的分类传递给redux仓库
+    let [isMenuVisible, setIsMenuVisible] = useState(false);
     const setCurrentCategory = (event: React.MouseEvent<HTMLUListElement>) => {
         let target: HTMLUListElement = event.target as HTMLUListElement;
-        let category = target.dataset.category;//获取用户选择的分类名称
-        props.setCurrentCategory(category);//设置分类名称
-        setIsMenuVisible(false);//关闭分类选择层
+        let category = target.dataset.category;
+        props.setCurrentCategory(category as string);
+        setIsMenuVisible(false);
     }
     return (
         <header className="home-header">
