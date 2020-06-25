@@ -28,6 +28,7 @@ const transitionStyles: TransitionStyles = {
 interface Props {
     currentCategory: string;
     setCurrentCategory: (currentCategory: string) => any;
+    refreshLessons: any;
 }
 function HomeHeader(props: Props) {
     let [isMenuVisible, setIsMenuVisible] = useState(false);
