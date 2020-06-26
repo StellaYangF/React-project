@@ -17,3 +17,7 @@ export function getLessons(
     }
   });
 }
+
+export function getLesson<T>(id: string) {
+  return axios.get<T, T>(`/lesson/${id}`)
+}

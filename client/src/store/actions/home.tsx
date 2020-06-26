@@ -1,5 +1,6 @@
 import { SET_CURRENT_CATEGORY, GET_SLIDERS, SET_LESSONS_LOADING, SET_LESSONS, REFRESH_LESSONS } from '../action-types';
 import { getSliders, getLessons } from '@/api/home';
+import { StoreDispatch, StoreGetState } from '..';
 
 export default {
     setCurrentCategory(currentCategory:string) {
@@ -15,7 +16,7 @@ export default {
       }
     },
     getLessons() {
-      return (dispatch: any, getState: any) => {
+      return (dispatch: StoreDispatch, getState: StoreGetState) => {
         (async function() {
           let {
             currentCategory,
@@ -30,7 +31,7 @@ export default {
       }
     },
     refreshLessons() {
-      return (dispatch: any, getState: any) => {
+      return (dispatch: StoreDispatch, getState: StoreGetState) => {
         (async function() {
           let {
             currentCategory,

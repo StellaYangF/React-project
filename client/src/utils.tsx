@@ -83,3 +83,8 @@ export function loadMore(element: any, callback: any) {
       return sessionStorage.getItem(key);
     },
   };
+
+  export function getNumber(price: string) {
+    price = price.replace('元', '').substring(1);
+    return Number(price);
+  }

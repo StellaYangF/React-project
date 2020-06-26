@@ -24,6 +24,7 @@
     "@types/react-swipe": "^6.0.0",
     "@types/react-transition-group": "^4.4.0",
     "@types/redux-logger": "^3.0.8",
+    "@types/redux-persist": "^4.3.1",
     "@types/redux-promise": "^0.5.29",
     "@types/redux-thunk": "^2.1.0",
     "antd": "^4.3.4",
@@ -40,6 +41,7 @@
     "redux": "^4.0.5",
     "redux-immer": "^1.0.5",
     "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0"
   },

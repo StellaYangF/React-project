@@ -27,8 +27,6 @@ function LessonList(props: Props, lessonListRef: any) {
     if (scrollTop - 7 * rem > 0) {
       start = Math.floor((scrollTop - 7 * rem) / (8.67 * rem));
     }
-    console.log("rem", rem);
-    console.log("start", start);
   }
   return (
     <section className="lesson-list">
