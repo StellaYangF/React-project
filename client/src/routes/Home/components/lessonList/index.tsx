@@ -9,6 +9,7 @@ interface Props {
   lessons?: any;
   getLessons?: any;
   container?: any;
+  currentCategory?: string;
 }
 
 function LessonList(props: Props, lessonListRef: any) {
@@ -28,10 +29,13 @@ function LessonList(props: Props, lessonListRef: any) {
       start = Math.floor((scrollTop - 7 * rem) / (8.67 * rem));
     }
   }
+  let currentCategoryContent: string = ' 全部课程';
+  if (props.currentCategory == 'react') currentCategoryContent =  ' React 课程';
+  if (props.currentCategory == 'vue') currentCategoryContent =  ' Vue 课程';
   return (
     <section className="lesson-list">
       <h2>
-        <MenuOutlined /> 全部课程
+        <MenuOutlined /> { currentCategoryContent }
       </h2>
       <Skeleton
         loading={props.lessons.list.length == 0 && props.lessons.loading}

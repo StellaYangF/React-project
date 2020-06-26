@@ -2,7 +2,6 @@ import React, { useState, CSSProperties } from 'react';
 import {BarsOutlined} from '@ant-design/icons';
 import classnames from 'classnames';
 import { Transition } from 'react-transition-group';
-//ts默认不支持png格式,需要添加images.d.ts声明文件以支持加载png
 import logo from '@/assets/images/logo.png';
 import './index.less';
 const duration = 1000;
@@ -36,6 +35,7 @@ function HomeHeader(props: Props) {
         let target: HTMLUListElement = event.target as HTMLUListElement;
         let category = target.dataset.category;
         props.setCurrentCategory(category as string);
+        props.refreshLessons();
         setIsMenuVisible(false);
     }
     return (

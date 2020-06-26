@@ -45,6 +45,7 @@ function Home(props: Props) {
           container={homeContainerRef}
           lessons={props.lessons}
           getLessons={props.getLessons}
+          currentCategory={ props.currentCategory }
         />
       </div>
     </>

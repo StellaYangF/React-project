@@ -18,6 +18,8 @@ import { StaticContext } from "react-router";
 import actions from "@/store/actions/cart";
 import { CartItem } from "@/typings/cart";
 import { getNumber } from "@/utils";
+import './index.less';
+
 interface Params {
   id: string;
 }
@@ -110,6 +112,7 @@ function Cart(props: Props) {
         dataSource={props.cart}
         pagination={false}
         size="small"
+        className='cart-list'
       />
       <Row style={{ padding: "5px" }}>
         <Col span={4}>

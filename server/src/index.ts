@@ -61,9 +61,11 @@ async function createSliders() {
   const sliders = await Slider.find();
   if (!sliders.length) {
     const sliders: any = [
-      { url: 'http://exjhn.com/webpages/static/images/reg/login_left.jpg' },
-      { url: 'http://img.12316hb.com/img/hbynw/website/61e4b8c35b4846bcb7b512498431cdfb.jpg' },
-      { url: 'http://a3.att.hudong.com/13/41/01300000201800122190411861466.jpg' }
+      { url: 'http://img.zhufengpeixun.cn/post_reactnative.png' },
+      { url: 'http://img.zhufengpeixun.cn/post_react.png' },
+      { url: 'http://img.zhufengpeixun.cn/post_vue.png' },
+      { url: 'http://img.zhufengpeixun.cn/post_wechat.png' },
+      { url: 'http://img.zhufengpeixun.cn/post_architect.jpg' },
     ];
     Slider.create(sliders);
   };

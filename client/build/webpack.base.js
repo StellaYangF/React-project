@@ -23,7 +23,24 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(le|c)ss$/,
+                test: /\.css$/,
+                // exclude: /node_modules/,
+                use: [
+                  MiniCssExtractPlugin.loader, 
+                  'css-loader', 
+                  'postcss-loader', 
+                //   {
+                //     loader: 'px2rem-loader',
+                //     options: {
+                //         remUnit: 75,
+                //         remPrecesion: 8
+                //     }
+                //   }, 
+                  'less-loader'
+                ],
+            },
+            {
+                test: /\.less$/,
                 // exclude: /node_modules/,
                 use: [
                   MiniCssExtractPlugin.loader, 

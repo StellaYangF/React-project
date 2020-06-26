@@ -1,48 +1,44 @@
-import { SET_CURRENT_CATEGORY, GET_SLIDERS, SET_LESSONS_LOADING, SET_LESSONS, REFRESH_LESSONS } from '../action-types';
-import { getSliders, getLessons } from '@/api/home';
-import { StoreDispatch, StoreGetState } from '..';
-
+import * as TYPES from "../action-types";
+import { getSliders, getLessons } from "@/api/home";
+import { StoreGetState, StoreDispatch } from "../index";
 export default {
-    setCurrentCategory(currentCategory:string) {
-      return {
-        type: SET_CURRENT_CATEGORY,
-        payload: currentCategory,
-      }
-    },
-    getSliders() {
-      return {
-        type: GET_SLIDERS,
-        payload: getSliders(),
-      }
-    },
-    getLessons() {
-      return (dispatch: StoreDispatch, getState: StoreGetState) => {
-        (async function() {
-          let {
-            currentCategory,
-            lessons: { hasMore, offset, limit, loading },
-          } = getState().home;
-          if (hasMore && !loading) {
-            dispatch({ type: SET_LESSONS_LOADING, payload: true });
-            let result = await getLessons(currentCategory, offset, limit);
-            dispatch({ type: SET_LESSONS, payload: result.data });
-          }
-        })();
-      }
-    },
-    refreshLessons() {
-      return (dispatch: StoreDispatch, getState: StoreGetState) => {
-        (async function() {
-          let {
-            currentCategory,
-            lessons: { limit, loading },
-          } = getState().home;
-          if (!loading) {
-            dispatch({ type: SET_LESSONS_LOADING, payload: true });
-            let result = await getLessons(currentCategory, 0, limit);
-            dispatch({ type: REFRESH_LESSONS, payload: result.data });
-          }
-        })();
-      }
-    }
+  setCurrentCategory(currentCategory: string) {
+    return { type: TYPES.SET_CURRENT_CATEGORY, payload: currentCategory };
+  },
+  getSliders() {
+    return {
+      type: TYPES.GET_SLIDERS,
+      payload: getSliders(),
+    };
+  },
+  getLessons() {
+   return (dispatch: StoreDispatch, getState: StoreGetState) => {
+      (async function () {
+        let {
+          currentCategory,
+          lessons: { hasMore, offset, limit, loading },
+        } = getState().home;
+        if (hasMore && !loading) {
+          dispatch({ type: TYPES.SET_LESSONS_LOADING, payload: true });
+          let result = await getLessons(currentCategory, offset, limit);
+          dispatch({ type: TYPES.SET_LESSONS, payload: result.data });
+        }
+      })();
+    };
+  },
+  refreshLessons() {
+   return (dispatch: StoreDispatch, getState: StoreGetState) => {
+      (async function () {
+        let {
+          currentCategory,
+          lessons: { limit, loading },
+        } = getState().home;
+        if (!loading) {
+          dispatch({ type: TYPES.SET_LESSONS_LOADING, payload: true });
+          let result = await getLessons(currentCategory, 0, limit);
+          dispatch({ type: TYPES.REFRESH_LESSONS, payload: result.data });
+        }
+      })();
+    };
+  },
 };
