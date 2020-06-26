@@ -1,5 +1,5 @@
 export default interface Lesson {
-    id: string;
+    _id: string;
     title: string;
     video: string;
     poster: string;

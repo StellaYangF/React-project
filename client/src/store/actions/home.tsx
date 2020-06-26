@@ -26,7 +26,7 @@ export default {
             let result = await getLessons(currentCategory, offset, limit);
             dispatch({ type: SET_LESSONS, payload: result.data });
           }
-        })
+        })();
       }
     },
     refreshLessons() {
@@ -41,7 +41,7 @@ export default {
             let result = await getLessons(currentCategory, 0, limit);
             dispatch({ type: REFRESH_LESSONS, payload: result.data });
           }
-        })
+        })();
       }
     }
 };
