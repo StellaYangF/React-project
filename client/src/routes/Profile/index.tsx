@@ -85,9 +85,9 @@ function Profile(props: Props) {
           <>
               <Alert
                   showIcon
-                  type='warning'
-                  message='当前未登录'
-                  description='亲爱的用户你好，你当前尚未登陆，请你选择注册或者登陆'
+                  type='info'
+                  message="You haven't login."
+                  description='Please login or register first.'
               >
               </Alert>
               <div style={{ textAlign: 'center', padding: '50px' }} className='profile-btns'>
@@ -99,7 +99,7 @@ function Profile(props: Props) {
   }
   return (
       <section>
-          <NavHeader history={ props.history }>个人中心</NavHeader>
+          <NavHeader history={ props.history }>Profile</NavHeader>
           {content}
       </section>
   )

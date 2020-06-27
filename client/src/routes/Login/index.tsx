@@ -26,18 +26,18 @@ function Login(props: Props) {
         className='login-form'
       >
         <Form.Item
-          label='用户名'
+          label='Username'
           name='username'
-          rules={[{ required: true, message: '请输入你的用户名！' }]}
+          rules={[{ required: true, message: 'Input your username please' }]}
         >
-          <Input prefix={ < UserAddOutlined/> } placeholder='用户名'></Input>
+          <Input prefix={ < UserAddOutlined/> } placeholder='username'></Input>
         </Form.Item>
         <Form.Item
-          label='密码'
+          label='Password'
           name='password'
-          rules={[{ required: true, message: '请输入你的用户名！' }]}
+          rules={[{ required: true, message: 'Input your password please' }]}
         >
-          <Input prefix={ < UserAddOutlined/> } placeholder='用户名' type='password'></Input>
+          <Input prefix={ < UserAddOutlined/> } placeholder='password' type='password'></Input>
         </Form.Item>
         <Form.Item>
           <Button type='primary' htmlType='submit' className='login-form-button'>login</Button>

@@ -55,9 +55,9 @@ function HomeHeader(props: Props) {
                                 ...transitionStyles[state]
                             }}
                         >
-                            <li data-category="all" className={classnames({ active: props.currentCategory === 'all' })}>全部课程</li>
-                            <li data-category="react" className={classnames({ active: props.currentCategory === 'react' })}>React课程</li>
-                            <li data-category="vue" className={classnames({ active: props.currentCategory === 'vue' })}>Vue课程</li>
+                            <li data-category="all" className={classnames({ active: props.currentCategory === 'all' })}>All Lessons</li>
+                            <li data-category="react" className={classnames({ active: props.currentCategory === 'react' })}>React Lessons</li>
+                            <li data-category="vue" className={classnames({ active: props.currentCategory === 'vue' })}>Vue Lessons</li>
                         </ul>
                     )
                 }

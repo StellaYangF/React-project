@@ -1,6 +1,6 @@
-// @import('@assets/css/styles.less');
-;
-@BG: #2a2a2a;
+@import '@/assets/css/styles.less';
+
+@BG: #f9a;
 .home-header {
   position: fixed;
   top: 0;
@@ -37,8 +37,9 @@
       color: #fff;
       font-size: 30px;
       border-top: 1px solid lighten(@BG, 20%);
-      &.active {
-        color: #f9b;
+      opacity: .6;
+      &.active, &:hover {
+        opacity: 1;
       }
     }
   }

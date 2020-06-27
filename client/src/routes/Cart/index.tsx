@@ -44,17 +44,17 @@ function Cart(props: Props) {
   };
   const columns = [
     {
-      title: "商品",
+      title: "Product",
       dataIndex: "lesson",
       render: (val: Lesson, row: CartItem) => (
         <>
           <p>{val.title}</p>
-          <p>单价:{val.price}</p>
+          <p>Unit: {val.price}</p>
         </>
       ),
     },
     {
-      title: "数量",
+      title: "Count",
       dataIndex: "count",
       render: (val: number, row: CartItem) => (
         <InputNumber
@@ -69,16 +69,17 @@ function Cart(props: Props) {
       ),
     },
     {
-      title: "操作",
+      title: "Delete",
       render: (val: any, row: CartItem) => (
         <Popconfirm
-          title="是否要删除商品?"
+          title="Sure to delete it?"
           onConfirm={() => props.removeCartItem(row.lesson._id)}
-          okText="是"
-          cancelText="否"
+          okText="Sure"
+          
+          cancelText="Cancel"
         >
-          <Button size="small" type="primary">
-            删除
+          <Button size="small" type="primary" danger>
+            Delete
           </Button>
         </Popconfirm>
       ),
@@ -104,7 +105,7 @@ function Cart(props: Props) {
     );
   return (
     <>
-      <NavHeader history={props.history}>购物车</NavHeader>
+      <NavHeader history={props.history}>Cart</NavHeader>
       <Table
         rowKey={(row) => row.lesson._id}
         rowSelection={rowSelection}
@@ -115,28 +116,33 @@ function Cart(props: Props) {
         className='cart-list'
       />
       <Row style={{ padding: "5px" }}>
-        <Col span={4}>
-          <Button type="primary" size="small" onClick={props.clearCartItems}>
-            清空
+        <Col span={14}>
+          <Button danger type="primary" size="small" onClick={props.clearCartItems}>
+            Clear
           </Button>
         </Col>
-        <Col span={9}>
-          已经选择{totalCount > 0 ? <Badge count={totalCount} /> : 0}件商品
-        </Col>
-        <Col span={7}>总价: ¥{totalPrice}元</Col>
-        <Col span={4}>
-          <Button type="primary" size="small" onClick={confirmSettle}>
-            去结算
-          </Button>
+        <Col span={10}>
+          Products chosen: {totalCount > 0 ? <Badge count={totalCount} /> : 0} 
         </Col>
       </Row>
+      <Row>
+        <Col span={14}>
+          <Button type="primary" size="small" onClick={confirmSettle}>
+            Checkout
+          </Button>
+        </Col>
+        <Col span={10}>Total: <span style={{ fontWeight: 'bold' }}> {totalPrice} </span>RMB</Col>
+      </Row>
       <Modal
-        title="去结算"
+        title="Go to checkout"
         visible={settleVisible}
         onOk={handleOk}
+        centered
         onCancel={handleCancel}
+        okText='Sure'
+        cancelText='Cancel'
       >
-        <p>请问你是否要结算?</p>
+        <p>Sure to checkout?</p>
       </Modal>
     </>
   );

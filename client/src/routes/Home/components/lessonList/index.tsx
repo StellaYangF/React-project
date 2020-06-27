@@ -29,9 +29,9 @@ function LessonList(props: Props, lessonListRef: any) {
       start = Math.floor((scrollTop - 7 * rem) / (8.67 * rem));
     }
   }
-  let currentCategoryContent: string = ' 全部课程';
-  if (props.currentCategory == 'react') currentCategoryContent =  ' React 课程';
-  if (props.currentCategory == 'vue') currentCategoryContent =  ' Vue 课程';
+  let currentCategoryContent: string = ' All Lessons';
+  if (props.currentCategory == 'react') currentCategoryContent =  ' React Lessons';
+  if (props.currentCategory == 'vue') currentCategoryContent =  ' Vue Lesson';
   return (
     <section className="lesson-list">
       <h2>
@@ -70,7 +70,7 @@ function LessonList(props: Props, lessonListRef: any) {
             type="primary"
             block
           >
-            {props.lessons.loading ? "" : "加载更多"}
+            {props.lessons.loading ? "" : "Load more"}
           </Button>
         ) : (
           <Alert

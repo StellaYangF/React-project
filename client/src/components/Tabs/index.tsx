@@ -5,9 +5,9 @@ import './index.less';
 
 function Tabs() {
     return <footer>
-        <NavLink exact to='/'><HomeOutlined/><span>乐乡聚</span></NavLink>
-        <NavLink to='/cart'><ShoppingCartOutlined/><span>订单</span></NavLink>
-        <NavLink to='/profile'><UserOutlined/><span>我的</span></NavLink>
+        <NavLink exact to='/'><HomeOutlined/><span>Home</span></NavLink>
+        <NavLink to='/cart'><ShoppingCartOutlined/><span>Order</span></NavLink>
+        <NavLink to='/profile'><UserOutlined/><span>Profile</span></NavLink>
     </footer>
 }
 
