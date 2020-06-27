@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = process.env.NODE_EN === 'production' ? '/': 'http://localhost:8000';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? '/': 'http://localhost:9999';
 axios.defaults.headers.post['Content-Type']='application/json;charset=UTF-8';
 axios.interceptors.request.use((config) => {
     let access_token = sessionStorage.getItem('access_token');
