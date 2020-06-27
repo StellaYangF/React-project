@@ -60,9 +60,14 @@ function Register(props: Props) {
              <Input prefix={<MailOutlined className='site-form-item-icon'/>} placeholder='email' type='email' />
           </Form.Item>
           <Form.Item>
-            <Button type='primary' htmlType='submit' className='login-form-button'>
-              Register
-            </Button>
+            <div style={{ textAlign: 'center' }}>
+              <Button type='primary' htmlType='submit' className='form-button'>
+                Register
+              </Button>
+              <Button type='primary' className='form-button-circle' onClick={ () => props.history.push('/login') }>
+                Login
+              </Button>
+            </div>
           </Form.Item>
         </Form>
     </>

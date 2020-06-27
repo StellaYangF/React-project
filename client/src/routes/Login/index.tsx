@@ -40,7 +40,10 @@ function Login(props: Props) {
           <Input prefix={ < UserAddOutlined/> } placeholder='password' type='password'></Input>
         </Form.Item>
         <Form.Item>
-          <Button type='primary' htmlType='submit' className='login-form-button'>login</Button>
+          <div style={{ textAlign: 'center' }}>
+            <Button type='primary' htmlType='submit' className='form-button'>Login</Button>
+            <Button type='primary' className='form-button-circle' onClick={ () => props.history.push('/register') }>Register</Button>
+          </div>
         </Form.Item>
       </Form>
     </>

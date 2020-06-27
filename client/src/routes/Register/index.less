@@ -2,14 +2,20 @@
 
 .login-form {
   padding: 20px;
-  .login-form-button {
-    width: 60%;
+  .form-button, .form-button-circle {
+    width: 30%;
     border-radius: 50px;
     margin: 0 auto;
-    display: block;
+    display: inline-block;
     background: @theme-color;
     border: none;
     outline: none;
     box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+  }
+  .form-button-circle {
+    background: #fff;
+    border: 2px solid @theme-color;
+    color: @theme-color;
+    margin-left: 10px;
   }
 }
