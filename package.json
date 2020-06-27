@@ -17,17 +17,12 @@
     "conventional-changelog": "^3.1.21",
     "cz-conventional-changelog": "^3.2.0",
     "glob": "^7.1.6",
-    "husky": "^4.2.5",
-    "image-webpack-loader": "^6.0.0",
-    "purgecss-webpack-plugin": "^2.3.0"
+    "husky": "^4.2.5"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {
-    "@ant-design/icons": "^4.2.1",
-    "@types/antd": "^1.0.0"
-  }
+  "dependencies": {}
 }
