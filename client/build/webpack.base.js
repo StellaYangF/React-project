@@ -20,6 +20,7 @@ module.exports = {
         },
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     },
+    resolve: [ '.js', 'tsx', '.less' ],
     module: {
         rules: [
             {
