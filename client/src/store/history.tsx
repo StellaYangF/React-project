@@ -1,2 +1,3 @@
-import { createHashHistory } from 'history';
-export default createHashHistory();
+import { createHashHistory, createBrowserHistory } from 'history';
+// export default createHashHistory();
+export default createBrowserHistory();

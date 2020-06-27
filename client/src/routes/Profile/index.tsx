@@ -50,9 +50,9 @@ function Profile(props: Props) {
       content = (
           <div className='user-info'>
               <Descriptions title='Current User'>
-                  <Descriptions.Item label='用户名'>{ props.user.username }</Descriptions.Item>
-                  <Descriptions.Item label='邮箱'>{ props.user.email }</Descriptions.Item>
-                  <Descriptions.Item label='头像'>
+                  <Descriptions.Item label='Username'>{ props.user.username }</Descriptions.Item>
+                  <Descriptions.Item label='Email'>{ props.user.email }</Descriptions.Item>
+                  <Descriptions.Item label='Avatar'>
                     <Upload
                       name='avatar'
                       listType='picture-card'
@@ -77,7 +77,7 @@ function Profile(props: Props) {
                   await props.logout();
                   props.history.push('/login');
                 } }
-              >退出登录</Button>
+              >Logout</Button>
           </div>
       )
   } else {
@@ -112,11 +112,11 @@ export default connect(mapStateToProps, actions)(Profile);
 function beforeUpload(file: any) {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
   if (!isJpgOrPng) {
-    message.error('你只能上传 JPG/PNG 文件！');
+    message.error('Picture file must be JPG/PNG!');
   }
   const isLessThan2M = file.size / 1024 / 1024 < 2;
   if (!isLessThan2M) {
-    message.error('图片必须小于 2 MB！');
+    message.error('Picture must less than 2 MB!');
   }
   return isJpgOrPng && isLessThan2M;
 }
